@@ -21,7 +21,7 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='static_transform_publisher',
             arguments=[
-                '--x', '0', '--y', '0', '--z', '0',
+                '--x', '0', '--y', '0', '--z', '-0.25',
                 '--qx', '0', '--qy', '0', '--qz', '0', '--qw', '1',
                 '--frame-id', 'map', '--child-frame-id', 'cloud'
             ]
@@ -31,7 +31,7 @@ def generate_launch_description():
             remappings=[('cloud_in', [LaunchConfiguration(variable_name='scanner'), '/cloud']),
                         ('scan', [LaunchConfiguration(variable_name='scanner'), '/scan'])],
             parameters=[{
-                'target_frame': 'base_link',
+                'target_frame': 'cloud',
                 'transform_tolerance': 0.01,
                 'min_height': -0.5,
                 'max_height': 1.0,
