@@ -33,11 +33,11 @@ def generate_launch_description():
             parameters=[{
                 'target_frame': 'base_link',
                 'transform_tolerance': 0.01,
-                'min_height': 1.0,
-                'max_height': -0.5,
-                'angle_min': -3.1415,  # -M_PI/2
-                'angle_max': 3.1415,  # M_PI/2
-                'angle_increment': 0.017,  # M_PI/360.0
+                'min_height': -0.5,
+                'max_height': 1.0,
+                'angle_min': -3.1415,  # -M_PI
+                'angle_max': 3.1415,  # M_PI
+                'angle_increment': 0.017,  # 2*M_PI/360.0
                 'scan_time': 0.3333,
                 'range_min': 0.01,
                 'range_max': 10.0,
