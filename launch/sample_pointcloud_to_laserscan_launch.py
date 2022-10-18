@@ -16,40 +16,20 @@ def generate_launch_description():
         #     parameters=[{'cloud_frame_id': 'cloud', 'cloud_extent': 2.0, 'cloud_size': 500}],
         #     name='cloud_publisher'
         # ),
-        Node(
-            package='tf2_ros',
-            executable='static_transform_publisher',
-            name='static_transform_publisher',
-            arguments=[
-                '--x', '0', '--y', '0', '--z', '-0.25',
-                '--qx', '0', '--qy', '0', '--qz', '0', '--qw', '1',
-                '--frame-id', 'map', '--child-frame-id', 'cloud'
-            ]
-        ),
-        Node(
-            package='tf2_ros',
-            executable='static_transform_publisher',
-            name='static_transform_publisher',
-            arguments=[
-                '--x', '0', '--y', '0', '--z', '0',
-                '--qx', '0', '--qy', '0', '--qz', '0', '--qw', '1',
-                '--frame-id', 'base_link', '--child-frame-id', 'map'
-            ]
-        ),
-        Node(
-            package='tf2_ros',
-            executable='static_transform_publisher',
-            name='static_transform_publisher',
-            arguments=[
-                '--x', '0', '--y', '0', '--z', '-0.25',
-                '--qx', '0', '--qy', '0', '--qz', '0', '--qw', '1',
-                '--frame-id', 'base_link', '--child-frame-id', 'cloud'
-            ]
-        ),
+        # Node(
+        #     package='tf2_ros',
+        #     executable='static_transform_publisher',
+        #     name='static_transform_publisher',
+        #     arguments=[
+        #         '--x', '0', '--y', '0', '--z', '-0.25',
+        #         '--qx', '0', '--qy', '0', '--qz', '0', '--qw', '1',
+        #         '--frame-id', 'map', '--child-frame-id', 'cloud'
+        #     ]
+        # ),
         Node(
             package='pointcloud_to_laserscan', executable='pointcloud_to_laserscan_node',
-            remappings=[('cloud_in', [LaunchConfiguration(variable_name='scanner'), '/cloud']),
-                        ('scan', [LaunchConfiguration(variable_name='scanner'), '/scan'])],
+            remappings=[('cloud_in',['/cloud']),
+                        ('scan', ['/scan'])],
             parameters=[{
                 'target_frame': 'cloud',
                 'transform_tolerance': 0.01,
